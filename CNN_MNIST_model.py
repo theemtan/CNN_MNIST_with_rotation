@@ -1,12 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[57]:
-
 
 # CNN
 import tensorflow.keras
-
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras import regularizers
 from tensorflow.keras.datasets import mnist
@@ -24,10 +18,6 @@ import numpy as np
 from IPython.display import display
 import pickle
 
-
-# In[58]:
-
-
 NAME = "handwritten_digits_MNIST_CNN"
 
 #  accesing_to_dataset
@@ -37,11 +27,6 @@ print("Shape of y_train: {}".format(y_train.shape))
 print()
 print("Shape of x_test: {}".format(x_test.shape))
 print("Shape of y_test: {}".format(y_test.shape))
-
-
-# In[59]:
-
-
 
 ROWS = 6
 random_indices = random.sample(range(x_train.shape[0]), ROWS * ROWS)
@@ -67,18 +52,10 @@ for i in range(ROWS * ROWS):
 plt.tight_layout()
 plt.show()
 
-
-# In[60]:
-
-
 # define CNN
 batch_size = 128
 num_classes = 10
 epochs = 10
-
-
-# In[61]:
-
 
 # input image dimensions
 
@@ -99,21 +76,11 @@ print('x_train shape:', x_train.shape)
 print("Training samples: {}".format(x_train.shape[0]))
 print("Test samples: {}".format(x_test.shape[0]))
 
-
-# In[62]:
-
-
-
 # convert class vectors to binary class matrices
 y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
 y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
 
 start_time = time.time()
-
-
-# In[63]:
-
-
 
 # Build Model, AdamOptimiser to train network used, crossentropy as os function
 model = Sequential()
@@ -129,10 +96,6 @@ model.add(Dropout(0.3))
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam',
               metrics=['accuracy'])
-
-
-# In[64]:
-
 
 # start training
 model.fit(x_train, y_train,
@@ -157,16 +120,11 @@ print('Test accuracy: {}'.format(score[1]))
 
 model.save('my_CNN_MNIST_v2_model.h5')
 
-
-# In[65]:
-
-
 score = model.evaluate(x_train, y_train, verbose=0)
 #print('Test loss: {}'.format(score[0]))
 print('Trained accuracy: {}'.format(score[1]))
 
 
-# In[ ]:
 
 
 
