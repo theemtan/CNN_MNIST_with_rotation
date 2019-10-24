@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
 
 from scipy import ndimage, misc
 import numpy as np
@@ -10,8 +5,8 @@ import os
 import cv2
 
 def main():
-    outPath = "D:\\rotated_class_data\\rotated_110"
-    path = "C:\\Users\\Tan Ek Huat\\Desktop\\test_data\\3"
+    outPath = "..." #output directory
+    path = "..." #input dataset
 
     # iterate through the names of contents of the folder
     for image_path in os.listdir(path):
@@ -32,9 +27,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-# In[ ]:
 
 
 
