@@ -1,8 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
+# this is to augment the data to rotate to the desired angle 
+# rotated to the range of -180 to 180 for this project
+# interval of 10 degrees 
 
 import os
 import cv2
@@ -26,12 +24,9 @@ import pickle
 from scipy import ndimage
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
-
-# In[2]:
-
-
-dict_test = "D:\\rotated_class_data\\rotated_150"
-#dict_test = "C:\\Users\\Tan Ek Huat\\Desktop\\test_data"
+#enter directory name
+dict_test = "..."
+#dict_test = "..."
 CATEGORIES = ["0","1","2","3","4","5","6","7","8","9"]
 #CATEGORIES = ["0"]
 
@@ -58,10 +53,6 @@ print(error)
 
 TEST = np.array(TEST).reshape(-1,IMG_SIZE,IMG_SIZE,1)
 
-
-# In[3]:
-
-
 print(np.shape(TEST))
 #print(np.shape(label))
 #print(label)
@@ -73,10 +64,6 @@ print(np.shape(TEST))
 #print("Shape of x_test: {}".format(x_test.shape))
 #print("Shape of y_test: {}".format(y_test.shape))
 #print(label)
-
-
-# In[4]:
-
 
 model = load_model("my_CNN_MNIST_model.h5")
 
@@ -95,8 +82,6 @@ label = tensorflow.keras.utils.to_categorical(label_, num_classes)
 loss, acc = model.evaluate(TEST, label)
 print("Restored model, accuracy: {:5.2f}%".format(100*acc))
 
-
-# In[ ]:
 
 
 
