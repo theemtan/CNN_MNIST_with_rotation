@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[11]:
-
+# augmenting the data by reducing the resolution/ image pixel by decreasing 2 from 28 to 2 
+# observe how the augmented data affects the accuracy of the trained model 
 
 import os
 import cv2
@@ -26,14 +23,10 @@ import pickle
 from scipy import ndimage
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
-
-# In[12]:
-
-
-#dict_test = "D:\\rotated_class_data\\rotated_180"
-dict_test = "C:\\Users\\Tan Ek Huat\\Desktop\\test_data"
+#enter directory name
+dict_test = "..."
 CATEGORIES = ["0","1","2","3","4","5","6","7","8","9"]
-#CATEGORIES = ["6"]
+
 
 IMG_SIZE = 2
 img_size2 = 28 #reduce resolution
@@ -62,10 +55,6 @@ for category in CATEGORIES:
 
 TEST = np.array(TEST).reshape(-1,img_size2,img_size2,1)
 
-
-# In[13]:
-
-
 print(np.shape(TEST))
 #print(np.shape(label))
 #print(label)
@@ -77,10 +66,6 @@ print(np.shape(TEST))
 #print("Shape of x_test: {}".format(x_test.shape))
 #print("Shape of y_test: {}".format(y_test.shape))
 #print(label)
-
-
-# In[14]:
-
 
 model = load_model("my_CNN_MNIST_model.h5")
 
@@ -100,7 +85,6 @@ loss, acc = model.evaluate(TEST, label)
 print("Restored model, accuracy: {:5.2f}%".format(100*acc))
 
 
-# In[ ]:
 
 
 
